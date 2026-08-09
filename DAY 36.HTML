@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Classes</title>
+</head>
+<body>
+
+    <h1>JavaScript Classes Examples</h1>
+
+    <script>
+// ==========================================
+// 1. WAIT FOR 2 SECONDS
+// ==========================================
+
+function waitTwoSeconds() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 2000);
+    });
+}
+
+async function task() {
+    await waitTwoSeconds();
+    console.log("1. Task completed");
+}
+
+task();
+
+
+// ==========================================
+// 2. FETCH USER DATA
+// ==========================================
+
+function getUserData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Lokesh");
+        }, 3000);
+    });
+}
+
+async function fetchUser() {
+    let name = await getUserData();
+    console.log("2. User Name:", name);
+}
+
+fetchUser();
+
+
+// ==========================================
+// 3. ADDITION WITH DELAY
+// ==========================================
+
+function addNumbers(a, b) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(a + b);
+        }, 1000);
+    });
+}
+
+async function calculate() {
+    let result = await addNumbers(10, 20);
+    console.log("3. Sum:", result);
+}
+
+calculate();
+
+
+// ==========================================
+// 4. SEQUENTIAL EXECUTION
+// ==========================================
+
+function task1() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("4. Task 1 completed");
+            resolve();
+        }, 1000);
+    });
+}
+
+function task2() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("4. Task 2 completed");
+            resolve();
+        }, 1000);
+    });
+}
+
+function task3() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("4. Task 3 completed");
+            resolve();
+        }, 1000);
+    });
+}
+
+async function runTasks() {
+    await task1();
+    await task2();
+    await task3();
+
+    console.log("4. All tasks completed");
+}
+
+runTasks();
+
+
+// ==========================================
+// 5. ORDER FOOD
+// ==========================================
+
+function placeOrder() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("5. Order placed");
+            resolve();
+        }, 1000);
+    });
+}
+
+function prepareFood() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("5. Food is ready");
+            resolve();
+        }, 2000);
+    });
+}
+
+async function orderFood() {
+    await placeOrder();
+    await prepareFood();
+
+    console.log("5. Enjoy your meal");
+}
+
+orderFood();
+
+
+// ==========================================
+// 6. DOWNLOAD A FILE
+// ==========================================
+
+function downloadFile() {
+    return new Promise((resolve) => {
+        console.log("6. Download started...");
+
+        setTimeout(() => {
+            console.log("6. Download completed");
+            resolve();
+        }, 3000);
+    });
+}
+
+async function startDownload() {
+    await downloadFile();
+    console.log("6. File is ready to use");
+}
+
+startDownload();
+
+
+// ==========================================
+// 7. CHECK EVEN OR ODD
+// ==========================================
+
+function checkNumber(num) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            if (num % 2 === 0) {
+                resolve("Even");
+            } else {
+                resolve("Odd");
+            }
+        }, 2000);
+    });
+}
+
+async function check() {
+    let result = await checkNumber(15);
+    console.log("7. Number is:", result);
+}
+
+check();
+
+
+// ==========================================
+// 8. HANDLE ERRORS
+// ==========================================
+
+function errorTask() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject("Something went wrong!");
+        }, 1000);
+    });
+}
+
+async function handleError() {
+    try {
+        await errorTask();
+        console.log("8. Task completed");
+    } catch (error) {
+        console.log("8. Error:", error);
+    }
+}
+
+handleError();
+
+
+// ==========================================
+// 9. MULTIPLE PROMISES
+// ==========================================
+
+function promise1() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Promise 1 completed");
+        }, 1000);
+    });
+}
+
+function promise2() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Promise 2 completed");
+        }, 2000);
+    });
+}
+
+function promise3() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Promise 3 completed");
+        }, 3000);
+    });
+}
+
+async function runPromises() {
+
+    let result1 = await promise1();
+    console.log("9.", result1);
+
+    let result2 = await promise2();
+    console.log("9.", result2);
+
+    let result3 = await promise3();
+    console.log("9.", result3);
+}
+
+runPromises();
+
+
+// ==========================================
+// 10. STUDENT RESULT
+// ==========================================
+
+function getResult(mark) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+
+            if (mark > 35) {
+                resolve("Pass");
+            } else {
+                resolve("Fail");
+            }
+
+        }, 1000);
+    });
+}
+
+async function studentResult() {
+
+    let result = await getResult(75);
+
+    console.log("10. Student Result:", result);
+}
+
+studentResult();
+
+
+    </script>
+</body>             
+</html>
